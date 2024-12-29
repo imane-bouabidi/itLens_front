@@ -1,0 +1,25 @@
+.survey-list {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.survey-list h2 {
+  color: #007bff;
+}
+
+.survey-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.survey-list li {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.survey-list p {
+  color: #555;
+}

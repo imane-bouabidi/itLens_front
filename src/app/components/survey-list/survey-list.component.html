@@ -1,1 +1,30 @@
-<p>survey-list works!</p>
+<div class="survey-list container mt-4">
+  <h2 class="mb-4">Liste des sondages</h2>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let survey of surveys">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ survey.title }}</h5>
+          <p class="card-text">{{ survey.description }}</p>
+
+          <!-- Vérification stricte -->
+          <div *ngIf="survey.surveyEditions && survey.surveyEditions.length > 0; else noEditions">
+            <h6>Éditions disponibles :</h6>
+            <ul>
+              <li *ngFor="let edition of survey.surveyEditions">
+                {{ edition.date }}
+              </li>
+            </ul>
+          </div>
+
+          <ng-template #noEditions>
+            <p class="text-muted">Aucune édition disponible.</p>
+          </ng-template>
+
+          <a href="#" class="btn btn-primary mt-3">Voir plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
