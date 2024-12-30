@@ -1,0 +1,81 @@
+.container {
+  padding: 20px;
+}
+
+.layout {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.subject-list {
+  list-style: none;
+  padding: 0;
+}
+
+.subject-item {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #e8e8e8;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.subject-item.active {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.subsubject-container {
+  margin-left: 20px;
+}
+
+.subsubject-list {
+  list-style: none;
+  padding: 5px;
+  margin-top: 5px;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+}
+
+.subsubject-item {
+  padding: 5px;
+  background-color: #e8e8e8;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.arrow {
+  color: #007bff;
+  margin-right: 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.no-subsubject-message {
+  color: #999;
+  font-style: italic;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.main-content {
+  flex: 2;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

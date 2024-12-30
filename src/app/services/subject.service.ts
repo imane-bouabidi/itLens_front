@@ -9,7 +9,7 @@ import {Subject} from '../models/subject.model';
   providedIn: 'root'
 })
 export class SubjectService {
-  private apiUrl = 'api/subjects';
+  private apiUrl = 'http://localhost:8080/subjects';
 
   constructor(private http: HttpClient) {}
 

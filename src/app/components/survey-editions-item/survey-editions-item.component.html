@@ -1,1 +1,20 @@
-<p>survey-editions-item works!</p>
+<div *ngIf="survey && selectedEdition">
+  <div class="survey-details">
+    <div class="details-row">
+      <span><strong>{{ survey.title }}</strong></span>
+      <span><strong>Edition du {{ selectedEdition.date }}</strong></span>
+      <span *ngIf="selectedEdition.creationDate">
+        Date de création : {{ selectedEdition.creationDate | date }}
+      </span>
+      <span *ngIf="selectedEdition.startDate">
+        Date de début : {{ selectedEdition.startDate | date }}
+      </span>
+    </div>
+  </div>
+
+  <app-subject-list [subjects]="selectedEdition.subjects"></app-subject-list>
+</div>
+
+<div *ngIf="!survey || !selectedEdition">
+  <p>Chargement en cours...</p>
+</div>

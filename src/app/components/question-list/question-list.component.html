@@ -1,1 +1,25 @@
-<p>question-list works!</p>
+<div *ngIf="subject">
+
+  <div *ngIf="questions.length > 0; else noQuestions">
+    <table>
+      <thead>
+      <tr>
+        <th>Question</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let question of questions">
+        <td>{{ question.text }}</td>
+<!--        <td>-->
+<!--          &lt;!&ndash; Ajoutez des actions ou des options si nécessaire &ndash;&gt;-->
+<!--          <button (click)="editQuestion(question)">Éditer</button>-->
+<!--        </td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noQuestions>
+    <p>Aucune question disponible pour ce sujet.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,62 @@
+<div class="container">
+  <!-- Affichage des messages d'erreur -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Conteneur principal pour sidebar et contenu principal -->
+  <div class="layout">
+    <!-- Barre latérale pour les sujets -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Liste des Sujets</h2>
+      <div *ngIf="subjects && subjects.length > 0; else noSubjects">
+        <ul class="subject-list">
+          <!-- Liste des sujets -->
+          <li
+            *ngFor="let subject of subjects"
+            [class.active]="selectedSubject === subject"
+            (click)="selectSubject(subject)"
+          >
+            <p class="subject-item">{{ subject.title }}</p>
+
+            <!-- Affichage des sous-sujets -->
+            <div *ngIf="selectedSubject === subject" class="subsubject-container">
+              <ul
+                *ngIf="subject.subSubjects && subject.subSubjects.length > 0"
+                class="subsubject-list"
+              >
+                <li
+                  *ngFor="let subSubject of subject.subSubjects"
+                  class="subsubject-item"
+                >
+                  <span class="arrow">→</span>{{ subSubject.title }}
+                </li>
+              </ul>
+
+              <!-- Message si aucun sous-sujet n'est disponible -->
+              <p
+                *ngIf="!subject.subSubjects || subject.subSubjects.length === 0"
+                class="no-subsubject-message"
+              >
+                → Aucun sous-sujet disponible.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <ng-template #noSubjects>
+        <p>Aucun sujet disponible.</p>
+      </ng-template>
+    </aside>
+
+    <!-- Contenu principal pour les questions -->
+    <main class="main-content">
+      <div *ngIf="selectedSubject; else selectSubjectMessage">
+        <app-question-list [subject]="selectedSubject"></app-question-list>
+      </div>
+      <ng-template #selectSubjectMessage>
+        <p>Sélectionnez un sujet pour voir les questions.</p>
+      </ng-template>
+    </main>
+  </div>
+</div>

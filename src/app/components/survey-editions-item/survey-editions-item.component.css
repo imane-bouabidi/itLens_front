@@ -1,0 +1,28 @@
+.survey-details {
+  margin-bottom: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.details-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-row span {
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  flex: 1;
+}
+
+.details-row span strong {
+  font-weight: bold;
+}

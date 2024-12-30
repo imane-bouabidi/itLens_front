@@ -1,8 +1,9 @@
-import {Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SurveyService } from '../../services/survey.service';
 import { Survey } from '../../models/survey.model';
-import {RouterOutlet} from '@angular/router';
-import {CommonModule} from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'survey-list',
@@ -17,6 +18,7 @@ import {CommonModule} from '@angular/common';
 export class SurveyListComponent implements OnInit {
   surveys!: Survey[];
   SurveyService = inject(SurveyService);
+  private router = inject(Router);
 
   ngOnInit() {
     this.SurveyService.getAllSurveys().subscribe({
@@ -28,5 +30,10 @@ export class SurveyListComponent implements OnInit {
         console.error('Error fetching surveys:', err);
       }
     });
+  }
+
+  redirectToEdition(surveyId: number, editionDate: string): void {
+    const formattedDate = encodeURIComponent(editionDate);
+    this.router.navigate([`/surveys/${surveyId}/edition/${formattedDate}`]);
   }
 }

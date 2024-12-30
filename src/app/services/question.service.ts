@@ -7,7 +7,7 @@ import {Question} from '../models/question.model';
   providedIn: 'root'
 })
 export class QuestionService {
-  private apiUrl = 'api/questions';
+  private apiUrl = 'http://localhost:8080/questions';
 
   constructor(private http: HttpClient) {}
 

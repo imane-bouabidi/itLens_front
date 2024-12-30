@@ -7,7 +7,7 @@ import {SurveyEdition} from '../models/survey-editions.model';
   providedIn: 'root'
 })
 export class SurveyEditionService {
-  private apiUrl = 'api/survey-editions';
+  private apiUrl = 'http://localhost:8080/survey/edition';
 
   constructor(private http: HttpClient) {}
 
