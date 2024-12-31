@@ -1,9 +1,59 @@
 <div class="survey-list container mt-4 ">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>Liste des sondages</h2>
-    <a href="#" class="btn btn-primary">Add Survey</a>
+    <button class="btn btn-primary" (click)="toggleAddForm()">Add Survey</button>
   </div>
   <div class="row justify-content-center">
+    <div *ngIf="showAddForm" class="col-md-4 mb-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Add New Survey</h5>
+          <form (ngSubmit)="addSurvey()">
+            <!-- Champ Titre -->
+            <div class="mb-3">
+              <label for="title" class="form-label">Titre</label>
+              <input
+                type="text"
+                id="title"
+                class="form-control"
+                [(ngModel)]="newSurvey.title"
+                name="title"
+                required
+              />
+            </div>
+
+            <!-- Champ Description -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                id="description"
+                class="form-control"
+                [(ngModel)]="newSurvey.description"
+                name="description"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Champ Owner -->
+            <div class="mb-3">
+              <label for="owner" class="form-label">Owner</label>
+              <input
+                type="text"
+                id="owner"
+                class="form-control"
+                [(ngModel)]="newSurvey.owner?.name"
+                name="owner"
+                required
+              />
+            </div>
+
+            <!-- Boutons -->
+            <button type="submit" class="btn btn-success me-2">Submit</button>
+            <button type="button" class="btn btn-secondary" (click)="toggleAddForm()">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <div class="col-md-4 mb-4" *ngFor="let survey of surveys">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -11,7 +61,7 @@
           <p class="card-text">{{ survey.description }}</p>
 
           <div *ngIf="survey.surveyEditions && survey.surveyEditions.length > 0; else noEditions">
-            <h6 class="mb-3">Owner : {{ survey.owner.name }}</h6>
+            <h6 class="mb-3">Owner : {{ survey.owner?.name }}</h6>
 
             <h6>Editions :</h6>
             <ul>

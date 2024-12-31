@@ -1,1 +1,45 @@
-<p>survey-form works!</p>
+<div class="survey-form">
+  <form (ngSubmit)="onSubmit()">
+    <!-- Champ Titre -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        [(ngModel)]="surveyData.title"
+        name="title"
+        required
+      />
+    </div>
+
+    <!-- Champ Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        [(ngModel)]="surveyData.description"
+        name="description"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Champ Owner -->
+    <div class="mb-3">
+      <label for="owner" class="form-label">Owner</label>
+      <input
+        type="text"
+        id="owner"
+        class="form-control"
+        [(ngModel)]="surveyData.owner?.name"
+        name="owner"
+        required
+      />
+    </div>
+
+    <!-- Boutons -->
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </form>
+</div>
