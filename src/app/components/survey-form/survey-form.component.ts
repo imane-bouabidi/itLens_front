@@ -16,6 +16,7 @@ import {Router} from '@angular/router';
 export class SurveyFormComponent {
   @Output() surveySubmitted = new EventEmitter<Omit<Survey, 'id'>>();
   @Output() formCanceled = new EventEmitter<void>();
+
   SurveyService = inject(SurveyService);
   router = inject(Router);
   showAddForm: boolean = false;
@@ -23,25 +24,30 @@ export class SurveyFormComponent {
   newSurvey: Omit<Survey, 'id'> = {
     title: '',
     description: '',
-    ownerId:1,
-    surveyEditions: [],
+    ownerId: 1,
+    surveyEditions: []
   };
-  surveyData: any;
 
   onSubmit(): void {
+    // console.log('Form submitted', this.newSurvey);
+    if (this.newSurvey.title && this.newSurvey.description) {
       this.SurveyService.createSurvey(this.newSurvey).subscribe({
         next: (survey) => {
-          this.router.navigate([''])
+          console.log('Survey created:', survey);
+          this.surveySubmitted.emit();
           this.showAddForm = false;
+
+          this.router.navigate(['']);
         },
         error: (err) => {
-          console.error('Error adding survey:', err);
-        },
+          console.error('Error creating survey:', err);
+        }
       });
-
+    }
   }
 
   onCancel(): void {
     this.formCanceled.emit();
   }
+
 }

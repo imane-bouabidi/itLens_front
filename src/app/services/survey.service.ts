@@ -12,6 +12,16 @@ export class SurveyService {
 
   constructor(private http: HttpClient) {}
 
+  createSurvey(survey: Omit<Survey, 'id'>): Observable<Survey> {
+    const surveyData = {
+      title: survey.title,
+      description: survey.description,
+      ownerId: survey.ownerId,
+      owner: survey.owner
+    };
+    return this.http.post<Survey>(this.Url, surveyData);
+  }
+
   getAllSurveys(): Observable<Survey[]> {
     return this.http.get<Survey[]>(this.Url);
   }
@@ -24,9 +34,9 @@ export class SurveyService {
     return this.http.get<SurveyEdition>(`${this.Url}/${surveyId}/editions/${editionDate}`);
   }
 
-  createSurvey(survey: Omit<Survey, 'id'>): Observable<Survey> {
-    return this.http.post<Survey>(this.Url, survey);
-  }
+  // createSurvey(survey: Omit<Survey, 'id'>): Observable<Survey> {
+  //   return this.http.post<Survey>(this.Url, survey);
+  // }
 
   updateSurvey(id: number, survey: Survey): Observable<Survey> {
     return this.http.put<Survey>(`${this.Url}/${id}`, survey);

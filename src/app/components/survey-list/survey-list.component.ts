@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {SurveyFormComponent} from '../survey-form/survey-form.component';
 
 @Component({
   selector: 'survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
-  imports: [RouterOutlet, CommonModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, FormsModule,SurveyFormComponent],
   standalone: true,
 })
 export class SurveyListComponent implements OnInit {
